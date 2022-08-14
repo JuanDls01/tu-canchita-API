@@ -33,9 +33,27 @@ PROJECT_APPS = []
 ECOMMERCE_APPS = []
 # Donde ubicamos todo lo que instalamos de requirements.
 THIRD_PARTY_APPS = [
+    'corsheaders',
+    'rest_framework',
+    'djoser',
+    'social_django',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + ECOMMERCE_APPS + THIRD_PARTY_APPS
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'autoParagraph': False
+    }
+}
+
+CKEDITOR_UPLOAD_PATH = "/media/"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
