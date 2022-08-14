@@ -176,6 +176,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+AUTH_USER_MODEL = 'user.UserAccount'
 
 # El console nos permite ver los correos electronicos en la consola. El smtp es para enviarlos a los correspondientes emails.
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -10,9 +10,18 @@ $ virtualenv venv
 $ source venv/Scripts/activate
 $ pip install -r requirements.txt
 ```
+
 3. Configurar archivo .env:
 
 ```Python
 SECRET_KEY='**********'
 DATABASE_URL=postgres://usuariodepostgres:contraseña@127.0.0.1:5432/nombrebd
+```
+
+## Crear super usuario:
+
+Escribimos en consola:
+
+```bash
+$ python manage.py createsuperuser
 ```
