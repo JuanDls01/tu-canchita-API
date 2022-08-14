@@ -174,4 +174,16 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# El console nos permite ver los correos electronicos en la consola. El smtp es para enviarlos a los correspondientes emails.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Para que los correos se envien cuando no estamos en modo de despliegue:
+if not DEBUG:
+    DEFAULT_FROM_EMAIL = 'TuCanchita - Alquila tu cancha <juanignaciodelossantos01@gmail.com>'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = env('EMAIL_HOST')
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+    EMAIL_PORT = env('EMAIL_PORT')
+    EMAIL_USE_TLS = env('EMAIL_USE_TLS')
