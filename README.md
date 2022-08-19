@@ -122,3 +122,38 @@ Response:
   ]
 }
 ```
+
+## SERVICE
+
+### GET Services
+
+http://localhost:8000/api/service/services
+
+Response:
+
+```JSON
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Estacionamiento"
+    },
+    {
+      "id": 2,
+      "name": "Asador"
+    },
+    {
+      "id": 3,
+      "name": "Vestuarios"
+    },
+    {
+      "id": 4,
+      "name": "Baños"
+    },
+    {
+      "id": 5,
+      "name": "Salón de eventos"
+    }
+  ]
+}
+```
