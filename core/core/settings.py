@@ -33,7 +33,10 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     'apps.user',
 ]
-ECOMMERCE_APPS = ['apps.sport']
+ECOMMERCE_APPS = [
+    'apps.sport',
+    'apps.service',
+]
 # Donde ubicamos todo lo que instalamos de requirements.
 THIRD_PARTY_APPS = [
     'corsheaders',
