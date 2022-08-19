@@ -16,7 +16,6 @@ class ListSportsView(APIView):
         if Sport.objects.all().exists():
             sports = Sport.objects.all()
             sports = SportSerializer(sports, many=True)
-            print(sports.data)
             return Response({'sports': sports.data}, status=status.HTTP_200_OK)
 
         else:
