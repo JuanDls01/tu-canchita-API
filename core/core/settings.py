@@ -36,6 +36,7 @@ PROJECT_APPS = [
 ECOMMERCE_APPS = [
     'apps.sport',
     'apps.service',
+    'apps.court',
 ]
 # Donde ubicamos todo lo que instalamos de requirements.
 THIRD_PARTY_APPS = [
