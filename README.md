@@ -91,3 +91,34 @@ Response: status 200 OK
 http://localhost:8000/auth/users/me/
 
 Headers: Content-Type: JWT "Token Access"
+
+## SPORT
+
+### GET Sports
+
+http://localhost:8000/api/sport/sports
+
+Response:
+
+```JSON
+{
+  "sports": [
+    {
+      "id": 1,
+      "name": "Fútbol"
+    },
+    {
+      "id": 2,
+      "name": "Paddle"
+    },
+    {
+      "id": 3,
+      "name": "Tenis"
+    },
+    {
+      "id": 4,
+      "name": "Basket"
+    }
+  ]
+}
+```
