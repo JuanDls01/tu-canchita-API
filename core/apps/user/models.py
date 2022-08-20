@@ -41,7 +41,9 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
 
     objects = UserAccountManager()
 
+    # USERNAME_FIELD: hace referencia al parámetro que va a diferenciar al modelo de los demas y siempre va a ser requerido
     USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS: campos requeridos si o si. Especialmente cuando creamos un usuario por consola.
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def get_full_name(self):
@@ -51,4 +53,4 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         return self.first_name
 
     def __str__(self):
-        return self.email
+        return f'Usuario: {self.email}'

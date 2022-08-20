@@ -216,6 +216,7 @@ DJOSER = {
     },
 }
 
+# AUTH_USER_MODEL: Le indicamos el modelo que queremos que el proyecto utilice como modelo de autenticación
 AUTH_USER_MODEL = 'user.UserAccount'
 
 # El console nos permite ver los correos electronicos en la consola. El smtp es para enviarlos a los correspondientes emails.
