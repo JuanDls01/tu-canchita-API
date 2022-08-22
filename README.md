@@ -8,7 +8,7 @@
 ```bash
 $ virtualenv venv
 $ source venv/Scripts/activate
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 
 3. Configurar archivo .env:

@@ -9,7 +9,7 @@ from .models import Service
 
 
 class ListServicesView(APIView):
-    permissions_classes = (permissions.AllowAny,)
+    permissions_classes = (permissions.IsAuthenticated,)
 
     def get(self, request, format=None):
         if Service.objects.all().exists():

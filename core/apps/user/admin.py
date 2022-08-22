@@ -12,10 +12,10 @@ class UserAdmin(admin.ModelAdmin):
     search_fields: Permite editar los campos especificados.
     '''
     list_display = ('first_name', 'last_name', 'email',
-                    'is_staff', 'is_superuser', 'is_active', 'last_login')
+                    'is_staff', 'is_superuser', 'is_active', 'last_login', 'group')
     list_display_links = ('first_name', 'last_name', 'email')
     search_fields = ('first_name', 'last_name', 'email',
-                     'is_staff', 'is_superuser', 'is_active', 'last_login')
+                     'is_staff', 'is_superuser', 'is_active', 'last_login', 'group')
     list_per_page = 25
 
 

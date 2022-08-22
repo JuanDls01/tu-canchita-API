@@ -166,7 +166,7 @@ STATICFILES_DIRS = [
 # Default Pagination Class: Para paginar nuestras lista, importante para que nuestro sitio pueda escalar correctamente.
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+        'rest_framework.permissions.AllowAny'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
