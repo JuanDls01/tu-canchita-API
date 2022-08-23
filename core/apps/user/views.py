@@ -1,19 +1,16 @@
-from django.shortcuts import render
 from rest_framework import generics
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework import permissions
 
-from apps.user.serializers import UserCreateSerializer
+from apps.user.models import UserAccount
+from apps.user.serializers import (UserSerializer, CustomUserSerializer)
 
 
-class UserCreateAPIView(generics.ListCreateAPIView):
-    permissions_classes = (permissions.AllowAny,)
-
+class UserCreateAPIView(generics.CreateAPIView):
     def create(self, request):
         data = request.data
-        user_serializer = UserCreateSerializer(data=data)
+        user_serializer = UserSerializer(data=data)
         if user_serializer.is_valid():
             user_serializer.save()
             return Response({
@@ -25,3 +22,16 @@ class UserCreateAPIView(generics.ListCreateAPIView):
             'message': 'Hay errores en el registro',
             'errors': user_serializer.errors
         }, status.HTTP_400_BAD_REQUEST)
+
+
+class ListUsersAPIView(generics.ListAPIView):
+    queryset = UserAccount.objects.all()
+    serializer_class = CustomUserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = CustomUserSerializer(queryset, many=True)
+        return Response({
+            'users': serializer.data
+        }, status.HTTP_200_OK)
