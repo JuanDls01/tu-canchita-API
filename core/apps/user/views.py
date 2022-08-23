@@ -1,6 +1,6 @@
 from rest_framework import generics
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
 from apps.user.models import UserAccount
@@ -15,7 +15,6 @@ class UserCreateAPIView(generics.CreateAPIView):
             user_serializer.save()
             return Response({
                 'message': 'User created successfully',
-                'user': user_serializer.data
             }, status.HTTP_201_CREATED)
 
         return Response({
@@ -27,7 +26,7 @@ class UserCreateAPIView(generics.CreateAPIView):
 class ListUsersAPIView(generics.ListAPIView):
     queryset = UserAccount.objects.all()
     serializer_class = CustomUserSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser]
 
     def list(self, request):
         queryset = self.get_queryset()
