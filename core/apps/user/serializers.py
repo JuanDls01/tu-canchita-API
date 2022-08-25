@@ -26,5 +26,15 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'group',
-            'password'
         ]
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Add custom claims
+        token['first_name'] = user.first_name
+        # ...
+
+        return token

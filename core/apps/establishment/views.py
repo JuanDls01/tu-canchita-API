@@ -10,7 +10,7 @@ from apps.establishment.serializers import EstablishmentSerializer
 
 class CreateEstablishmentAPIView(generics.ListCreateAPIView):
     queryset = Establishment.objects.all()
-    permission_classes = [DjangoModelPermissions]
+    permission_classes = (DjangoModelPermissions,)
 
     def create(self, request, format=None):
         data = request.data
