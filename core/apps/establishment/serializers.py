@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Establishment
+from apps.establishment.models import Establishment
 
 
-class EstablishmentSerializer(serializers.ModelSerializers):
+class EstablishmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Establishment
         fields = '__all__'

@@ -1,17 +1,40 @@
-from djoser.serializers import UserCreateSerializer
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
-User = get_user_model()
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from apps.user.models import UserAccount
 
 
-class UserCreateSerializer(UserCreateSerializer):
-    class Meta(UserCreateSerializer.Meta):
-        model = User
-        fields = (
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserAccount
+        fields = '__all__'
+
+    def create(self, validated_data):
+        user = UserAccount(**validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    group = serializers.StringRelatedField()
+
+    class Meta:
+        model = UserAccount
+        fields = [
             'id',
             'email',
             'first_name',
             'last_name',
-            'get_full_name',
-            'get_short_name',
-        )
+            'group',
+        ]
+
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Add custom claims
+        token['first_name'] = user.first_name
+        # ...
+
+        return token

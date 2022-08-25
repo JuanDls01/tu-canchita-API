@@ -8,14 +8,21 @@
 ```bash
 $ virtualenv venv
 $ source venv/Scripts/activate
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 
 3. Configurar archivo .env:
 
-```Python
+```
 SECRET_KEY='**********'
 DATABASE_URL=postgres://usuariodepostgres:contraseña@127.0.0.1:5432/nombrebd
+```
+
+4. Migrar modelos y base de datos:
+
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
 ```
 
 ## Crear super usuario:
@@ -30,6 +37,31 @@ $ python manage.py createsuperuser
 
 ## AUTH
 
+### Create User:
+
+POST http://localhost:8000/auth/users/
+
+Body:
+
+```JSON
+{
+  "email": "email@gmail.com",
+  "first_name": "First Name",
+  "last_name": "Last Name",
+  "password": "Password",
+  "re_password": "Password",
+  "group": 1
+}
+```
+
+Response: Status 201 Created
+
+```JSON
+{
+  "message": "User created successfully",
+}
+```
+
 ### JWT Token Create (login):
 
 http://localhost:8000/auth/jwt/create/
@@ -38,8 +70,8 @@ Body:
 
 ```JSON
 {
-  "email": "juanignaciodelossantos01@gmail.com",
-  "password": "Fenix1999"
+  "email": "email@gmail.com",
+  "password": "Password"
 }
 ```
 
@@ -86,7 +118,7 @@ Body
 
 Response: status 200 OK
 
-### GET User Info:
+<!-- ### GET User Info:
 
 http://localhost:8000/auth/users/me/
 
@@ -156,4 +188,4 @@ Response:
     }
   ]
 }
-```
+``` -->

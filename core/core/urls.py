@@ -1,6 +1,10 @@
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+# from rest_framework_simplejwt.views import (
+#     TokenObtainPairView,
+#     TokenRefreshView,
+# )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -9,8 +13,6 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.social.urls')),
 
-    path('api/sport/', include('apps.sport.urls')),
-    path('api/service/', include('apps.service.urls')),
-    path('api/establishment/', include('apps.establishment.urls')),
-    path('api/court/', include('apps.court.urls')),
+    path('user/', include('apps.user.urls')),
+    path('api/establishment/', include('apps.establishment.urls'))
 ]

@@ -34,10 +34,10 @@ PROJECT_APPS = [
     'apps.user',
 ]
 ECOMMERCE_APPS = [
-    'apps.sport',
-    'apps.service',
+    # 'apps.sport',
+    # 'apps.service',
     'apps.establishment',
-    'apps.court',
+    # 'apps.court',
 ]
 # Donde ubicamos todo lo que instalamos de requirements.
 THIRD_PARTY_APPS = [
@@ -143,7 +143,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -166,7 +165,7 @@ STATICFILES_DIRS = [
 # Default Pagination Class: Para paginar nuestras lista, importante para que nuestro sitio pueda escalar correctamente.
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+        'rest_framework.permissions.AllowAny'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -209,9 +208,9 @@ DJOSER = {
     'SOCIAL_AUTH_TOKEN_STRATEGY': 'djoser.social.token.jwt.TokenStrategy',
     'SOCIAL_AUTH_ALLOWED_REDIRECT_URIS': ['http://localhost:8000/google', 'http://localhost:8000/facebook'],
     'SERIALIZERS': {
-        'user_create': 'apps.user.serializers.UserCreateSerializer',
-        'user': 'apps.user.serializers.UserCreateSerializer',
-        'current_user': 'apps.user.serializers.UserCreateSerializer',
+        'user_create': 'apps.user.serializers.UserSerializer',
+        'user': 'apps.user.serializers.UserSerializer',
+        'current_user': 'apps.user.serializers.UserSerializer',
         'user_delete': 'djoser.serializers.UserDeleteSerializer',
     },
 }
